@@ -1,0 +1,9 @@
+body {
+    background-color: white;
+}
+
+$theme-colors: (
+  "primary": #444444,
+);
+
+@import "~bootstrap/scss/bootstrap";
