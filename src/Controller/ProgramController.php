@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProgramController extends AbstractController
 {
     /**
-     * @Route("/", name="_index")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
@@ -21,7 +21,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", requirements={"id"="\d+"}, methods={"GET"}, name="_show")
+     * @Route("/{id}", requirements={"id"="\d+"}, methods={"GET"}, name="show")
      */
     public function show(int $id): Response
     {
