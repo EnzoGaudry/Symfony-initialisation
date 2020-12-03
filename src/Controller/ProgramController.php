@@ -63,7 +63,7 @@ class ProgramController extends AbstractController
 
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
-            ->findOneBy(['number' => $seasonId]);
+            ->findOneBy(['id' => $seasonId]);
 
         $episodes = $seasons->getEpisodes();
 
