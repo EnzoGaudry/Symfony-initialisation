@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\SeasonRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Episode;
+use App\Entity\Program;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SeasonRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=SeasonRepository::class)
@@ -35,7 +37,7 @@ class Season
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=program::class, inversedBy="seasons")
+     * @ORM\ManyToOne(targetEntity=Program::class, inversedBy="seasons")
      * @ORM\JoinColumn(nullable=false)
      */
     private $program;
