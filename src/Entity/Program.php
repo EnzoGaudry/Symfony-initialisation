@@ -9,9 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @UniqueEntity("title", message="ce titre existe déjà")
  */
 class Program
 {
@@ -24,11 +27,14 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max="255")
+     * @Assert\NotBlank(message="Je suis vide aled")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Je suis vide aled")
      */
     private $summary;
 
