@@ -6,6 +6,7 @@ use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Category;
+use App\Service\Slugify;
 use App\Form\ProgramType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +37,7 @@ class ProgramController extends AbstractController
     /**
      *  @Route("/new", name="new")
      */
-    public function new(Request $request) : Response
+    public function new(Request $request, Slugify $slugify) : Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -44,6 +45,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
 
@@ -54,8 +57,8 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{programId}", requirements={"id"="\d+"}, methods={"GET"}, name="show")
-     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programId": "id"}})
+     * @Route("/{slug}", name="show")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"slug": "slug"}})
      */
     public function show(Program $program):Response
     {
@@ -101,8 +104,8 @@ class ProgramController extends AbstractController
      * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"seasonId": "id"}})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episodeId": "id"}})
      */
-    public function showEpisode(Program $program, Season $season, Episode $episode) {
-        
+    public function showEpisode(Program $program, Season $season, Episode $episode)
+    {
         return $this->render('program/episode_show.html.twig', [
             'season' => $season,
             'program' => $program,
