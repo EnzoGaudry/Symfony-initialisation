@@ -4,12 +4,24 @@
 
 {% block body %}
 
-<div class="media">
+<div>
     <div>
         <h1>{{ program.title }} Saison {{ season.number }}</h1>
         <h3>Episode {{ episode.number }} : {{ episode.title }}</h3>
         <h4>Synopsis :</h4>
         <p>{{ episode.synopsis }}</p>
+        {% if app.user %}
+            <b><a href="{{ path("comment_new", {id: episode.id}) }}">Ajouter un commentaire</a></b>
+        {% else %}
+        {% endif %}
+            <ul>
+                {% for comment in episode.comments %}
+                    <p><b>Utilisateur :</b> {{ comment.author.email }}</p>
+                    <p><b>Note :</b> {{ comment.rate }} / 5</p>
+                    <p><b>Commentaire :</b> {{ comment.comment }}</p>
+                    <hr>
+                {% endfor %}
+            </ul>
     </div>
 </div>
 <br>

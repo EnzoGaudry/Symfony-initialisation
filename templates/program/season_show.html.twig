@@ -4,10 +4,10 @@
 
 {% block body %}
 
-<div class="media">
+<div>
     <div>
         {% for episode in episodes %} <br>
-            <h4><a href="{{ path('program_season_episode_show', {seasonId: season.id, programId : program.id, episodeId : episode.id}) }}">Episode {{ episode.number }}</a></h4><br>
+            <h4><a href="{{ path('program_episode_show', {seasonId: season.id, programId : program.id, episodeId : episode.id}) }}">Episode {{ episode.number }}</a></h4><br>
             Titre : {{ episode.title }} <br>
             Synopsis : {{ episode.synopsis }} <br>
         {% endfor %}

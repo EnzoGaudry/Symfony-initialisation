@@ -16,3 +16,5 @@ Vidéo quest 16 : https://www.awesomescreenshot.com/video/1994511?key=2e6cfd8593
 Vidéo quest 17 : https://www.awesomescreenshot.com/video/2065134?key=7cff1058541d8cbfbba2d169cda329e2
 
 Vidéo quest 18 : https://www.awesomescreenshot.com/video/2247994?key=9da88479af8b1b210eb86b66f2e871ec
+
+Vidéo quest 19 : https://www.awesomescreenshot.com/video/2263827?key=80386e14ca313608208815dc0367ee67
