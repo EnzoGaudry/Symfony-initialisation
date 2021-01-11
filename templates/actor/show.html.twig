@@ -5,6 +5,7 @@
 {% block body %}
 
     <h1 class="text-center my-4">{{ actor.name }}</h1>
+    <img src="/uploads/{{actor.photo}}">
     <h2>List of programs</h2>
     <ul>
         {% for program in actor.programs %}
