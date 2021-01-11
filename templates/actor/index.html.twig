@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - All actors{% endblock %}
+{% block body %}
+    <div>
+        <h1>Actors</h1>
+        <a href="{{ path("actor_new") }}">Add Actor</a>
+        <div>
+            {% for actor in actors %}
+                <div>
+                    <img src="/uploads/{{actor.photo}}">
+                    <div>
+                        <h2>{{ actor.name }}</h2>
+                        <a href="{{ path("actor_show", { actorId: actor.id }) }}">Show</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
